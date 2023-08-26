@@ -1,4 +1,5 @@
-const ProductManager = require('./ProductManager');
+const ProductManager = require('./ProductManager.js');
+
 
 const path = './data/productos.json';
 
@@ -14,6 +15,9 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/" , (req, res)=>{
+    res.end("....INICIO...")
+})
 
 app.get('/products', async (req, res) => {
     const  products = await pm.getProducts()
@@ -30,7 +34,7 @@ app.get('/products/:pid', async (req, res) => {
 
 
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
 
 
 
@@ -51,3 +55,4 @@ app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`)
 // // console.log(await pm.modifyProductById(10, "producto prueba modificado", "Este es un producto prueba", 200, "Sin imagen", "abc12345", 25))
 // // }
 // entorno();
+

@@ -1,6 +1,6 @@
-const { leerJson, escribirJson, existe } = require('../data/index')
-const Producto = require('./producto')
+const { leerJson, escribirJson, existe } = require('../data/index.js');
 
+const Producto = require('./producto.js')
 class ProductManager {
     constructor(path) {
         this.path = path;
@@ -17,14 +17,14 @@ class ProductManager {
         let products = await this.getProducts();
 
         if (products.find(item => item.product.code === code)) {
-            return console.log(`El producto con el code: ${code} ya existe.`);
+            return console.log(`El producto con el code: ${code} ya esta registrado.`);
         }
         products.push({
             product: new Producto(title, description, price, thumbnail, code, stock),
             id: products.length === 0 ? 1 : products[products.length - 1].id + 1
         });
         await escribirJson(this.path, products);
-        return console.log('El producto se agrego exitosamente');
+        return console.log('El producto se ha agregado con exito');
     }
 
     async getProductById(productId) {
@@ -32,7 +32,7 @@ class ProductManager {
         if (product) {
             return product;
         }
-        return 'Not found';
+        return 'error 404 - Not found';
     }
     async deleteProductById(productId) {
         let products = await this.getProducts();
@@ -42,7 +42,7 @@ class ProductManager {
             console.log('Se elimino el producto correctamente');
             return;
         }
-        console.log('Not found');
+        console.log('error 404 - Not found');
     }
     async modifyProductById(productId, title, description, price, thumbnail, code, stock) {
         let products = await this.getProducts();
@@ -52,7 +52,7 @@ class ProductManager {
             await escribirJson(this.path, products);
             return 'El producto se modifico correctamente';
         }
-        return 'Not found'
+        return 'error 404 - Not found'
     }
 }
 

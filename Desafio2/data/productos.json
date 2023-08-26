@@ -1,8 +1,8 @@
 [
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "MOTO",
+			  "description": "Esto es una moto",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc123",
@@ -12,8 +12,8 @@
 	},
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "AUTO",
+			  "description": "Esto es un auto",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc1234",
@@ -23,8 +23,8 @@
 	},
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "Bicicleta",
+			  "description": "Esto es una bicicleta",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc12345",
@@ -34,8 +34,8 @@
 	},
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "Monopatin",
+			  "description": "Este es un monopatin",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc123456",
@@ -46,8 +46,8 @@
 	,
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "Patineta",
+			  "description": "Esta es una patineta",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc1234567",
@@ -57,8 +57,8 @@
 	},
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "Estufa",
+			  "description": "Esta es una estufa",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc1234568",
@@ -68,8 +68,8 @@
 	},
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "Refrigeradora",
+			  "description": "Esta es una refrigeradora",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc1234569",
@@ -79,8 +79,8 @@
 	},
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "Microondas",
+			  "description": "Esto es un microondas",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc1234560",
@@ -90,8 +90,8 @@
 	},
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "Licuadora",
+			  "description": "Esta es una licuadora",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc12345611",
@@ -101,8 +101,8 @@
 	},
 	{
 		 "product": {
-			  "title": "producto prueba",
-			  "description": "Este es un producto prueba",
+			  "title": "Horno",
+			  "description": "Este es un horno",
 			  "price": 200,
 			  "thumbnail": "Sin imagen",
 			  "code": "abc12345612",
