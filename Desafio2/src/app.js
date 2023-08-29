@@ -15,12 +15,12 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/" , (req, res)=>{
+app.get("/", (req, res) => {
     res.end("....INICIO...")
 })
 
 app.get('/products', async (req, res) => {
-    const  products = await pm.getProducts()
+    const products = await pm.getProducts()
     if (req.query.limit) {
         res.send(products.slice(0, +req.query.limit));
         return;
@@ -28,13 +28,28 @@ app.get('/products', async (req, res) => {
     res.send(products);
 });
 app.get('/products/:pid', async (req, res) => {
-    const  products = await pm.getProductById(+req.params.pid)
+    const products = await pm.getProductById(+req.params.pid)
     res.send(products);
 });
 
+// app.post('/products', async (req, res) => {
+//     let { title, description, price, thumbnail, code, stock } = req.body
+//     let products = await this.getProducts();
+
+//         if (products.find(item => item.product.code === code)) {
+//             return console.log(`El producto con el code: ${code} ya esta registrado.`);
+//         }
+//         products.push({
+//             product: new Producto(title, description, price, thumbnail, code, stock),
+//             id: products.length === 0 ? 1 : products[products.length - 1].id + 1
+//         });
+//         await escribirJson(this.path, products);
+//         return console.log('El producto se ha agregado con exito');
+// })
 
 
-app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+
+// app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
 
 
 
