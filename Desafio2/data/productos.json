@@ -16,5 +16,14 @@
           "thumbnail": "Sin imagen",
           "code": "abc123",
           "stock": 25
+     },
+     {
+          "id": 3,
+          "title": "Horno",
+          "description": "Este es un horno",
+          "price": 200,
+          "thumbnail": "Sin imagen",
+          "code": "abc12345612",
+          "stock": 2
      }
 ]

@@ -2,14 +2,11 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
+
 let ruta = path.join(__dirname, "..", 'data', 'productos.json');
 
-const PORT = 3000;
 
-const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const router = express.Router()
 
 
 //Obtiene los productos
@@ -29,18 +26,23 @@ function saveProductos(products) {
         console.error("Error al guardar producto:", error);
     }
 }
-
-
-//Muestro los productos guardados
-app.get('/api/product', (req, res) => {
-    let products = getProductos();
+router.get('/', async (req, res) => {
+    const products = await pm.getProducts()
+    if (req.query.limit) {
+        res.send(products.slice(0, +req.query.limit));
+        return;
+    }
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json({ data: products });
 });
 
+router.get('/:pid', async (req, res) => {
+    const products = await pm.getProductById(+req.params.pid)
+    res.send(products);
+});
 
 // Crea un nuevo producto 
-app.post('/api/product', (req, res) => {
+router.post('/', (req, res) => {
 
     let { title, description, price, thumbnail, code, stock } = req.body;
 
@@ -74,7 +76,7 @@ app.post('/api/product', (req, res) => {
 })
 
 // Modifica  productos ya cargados 
-app.put('/api/product/:id', (req, res) => {
+router.put('/:id', (req, res) => {
 
     let id = parseInt(req.params.id)
     if (isNaN(id)) {
@@ -124,7 +126,7 @@ app.put('/api/product/:id', (req, res) => {
 })
 
 //Elimina productos completos 
-app.delete('/api/product/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
     let id = parseInt(req.params.id)
     if (isNaN(id)) {
@@ -147,8 +149,4 @@ app.delete('/api/product/:id', (req, res) => {
 
 })
 
-
-
-const server = app.listen(PORT, () => {
-    console.log(`Server escuchando en http://localhost:${PORT}`);
-});
+module.exports = router;
