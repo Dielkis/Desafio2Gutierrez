@@ -1,20 +1,32 @@
-const ProductManager = require('./ProductManager.js');
-const path = './data/productos.json';
-pm = new ProductManager(path);
-const productsRouter = require("./apiProduct.js")
-const cartRouter = require("./apiCarts.js")
 const express = require('express');
+const handlebars = require('express-handlebars');
 const app = express();
-PORT = 8080;
+const path = require('path')
+const productsRouter = require('./routes/apiProduct.js');
+const cartsRouter = require('./routes/apiCarts.js');
+const viewRouter = require('./routes/apiViews.js');
+const { Server } = require('socket.io')
+const PORT = 8080;
+
 
 app.use(express.json());
-
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/products", productsRouter)
-app.use("/api/carts", cartRouter)
+app.use(express.static(path.join(__dirname + '/public')));
 
+app.use((req, res, next) => {
+    req.io = io;
+    next();
+});
 
+app.engine('handlebars', handlebars.engine());
+app.set('views', path.join(__dirname + '/views'));
+app.set('view engine', 'handlebars');
 
-app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+// Routes
+app.use('/', viewRouter);
+app.use('/api/products', productsRouter);
+app.use('/api/carts', cartsRouter);
 
-
+const serverExpress = app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+const io = new Server(serverExpress);
+require('./sockets/socket')(io);
